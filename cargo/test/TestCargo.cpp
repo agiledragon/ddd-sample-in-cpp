@@ -1,16 +1,15 @@
 #include "gtest/gtest.h"
-#include "domain/service/CargoProvider.h"
+#include "domain/model/CargoProvider.h"
 #include "domain/model/CargoRepo.h"
 #include "domain/model/Cargo.h"
 #include "app/service/CargoApi.h"
-#include "app/service/CargoMsg.h"
 #include "domain/service/CargoService.h"
 
 #include <vector>
 
 namespace
 {
-	struct StubCargoProvider : CargoProvider
+	struct SpyCargoProvider : CargoProvider
 	{
 		virtual void confirm(Cargo* cargo) override
 		{
@@ -22,7 +21,7 @@ namespace
 		int afterDays;
 	};
 
-	struct StubCargoRepo : CargoRepo
+	struct FakeCargoRepo : CargoRepo
 	{
 		virtual void add(Cargo* cargo) override
 		{
@@ -79,42 +78,44 @@ struct CargoTest : testing::Test
 {
 	virtual void SetUp()
 	{
-		provider = new StubCargoProvider();
-		repo = new StubCargoRepo();
-		service = new CargoService(repo, provider);
-		api = new CargoApi(service);
+		provider = new SpyCargoProvider();
+		repo = new FakeCargoRepo();
+		setCargoProvider(provider);
+		setCargoRepo(repo);
 	}
 
 	virtual void TearDown()
 	{
 		delete provider;
 		delete repo;
-		delete service;
-		delete api;
 	}
 
 protected:
-	StubCargoProvider* provider;
+	SpyCargoProvider* provider;
 	CargoRepo* repo;
-	CargoService* service;
-	CargoApi* api;
 };
 
 TEST_F(CargoTest, create_cargo)
 {
-	CargoMsg msg(1, 10);
-	api->createCargo(&msg);
-	ASSERT_EQ(1, provider->cargoId);
-	ASSERT_EQ(10, provider->afterDays);
+	const int CARGO_ID = 1;
+	const int AFTER_DAYS = 10;
+	createCargo(CARGO_ID, AFTER_DAYS);
+	int afterDays = getCargoAfterDays(1);
+	ASSERT_EQ(CARGO_ID, provider->cargoId);
+	ASSERT_EQ(AFTER_DAYS, provider->afterDays);
+	ASSERT_EQ(AFTER_DAYS, afterDays);
 }
 
 TEST_F(CargoTest, delay_cargo)
 {
-	CargoMsg msg(2, 20);
-	api->createCargo(&msg);
-	ASSERT_EQ(2, provider->cargoId);
-	api->delay(2, 5);
-	ASSERT_EQ(2, provider->cargoId);
-	ASSERT_EQ(25, provider->afterDays);
+	const int CARGO_ID = 1;
+	const int AFTER_DAYS = 20;
+	const int DAYS = 5;
+	createCargo(CARGO_ID, AFTER_DAYS);
+	delayCargo(CARGO_ID, DAYS);
+	int afterDays = getCargoAfterDays(1);
+	ASSERT_EQ(CARGO_ID, provider->cargoId);
+	ASSERT_EQ(AFTER_DAYS + DAYS, provider->afterDays);
+	ASSERT_EQ(AFTER_DAYS + DAYS, afterDays);
 }
 

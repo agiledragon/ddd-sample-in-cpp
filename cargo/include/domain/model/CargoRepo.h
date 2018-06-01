@@ -13,5 +13,7 @@ struct CargoRepo
 	virtual void remove(int cargoId) = 0;
 };
 
+void setCargoRepo(CargoRepo* repo);
+CargoRepo* getCargoRepo();
 
 #endif

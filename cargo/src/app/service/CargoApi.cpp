@@ -1,19 +1,18 @@
 #include "app/service/CargoApi.h"
-#include "app/service/CargoMsg.h"
 #include "domain/service/CargoService.h"
 #include "domain/model/Cargo.h"
 
-CargoApi::CargoApi(CargoService *service) : service(service)
+void createCargo(int cargoId, int afterDays)
 {
-
+	CargoService().create(cargoId, afterDays);
 }
 
-void CargoApi::createCargo(CargoMsg* msg)
+void delayCargo(int cargoId, int days)
 {
-	service->create(msg->getCargoId(), msg->getAfterDays());
+	CargoService().delay(cargoId, days);
 }
 
-void CargoApi::delay(int cargoId, int days)
+int getCargoAfterDays(int cargoId)
 {
-	service->delay(cargoId, days);
+	return CargoService().getAfterDays(cargoId);
 }

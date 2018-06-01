@@ -6,15 +6,18 @@ struct CargoProvider;
 
 struct CargoService
 {
-	CargoService(CargoRepo* repo, CargoProvider* provider);
+	CargoService();
 
 	void create(int cargoId, int afterDays);
 	void delay(int cargoId, int days);
+	int getAfterDays(int cargoId);
 
 private:
 	CargoRepo* repo;
 	CargoProvider* provider;
 };
+
+const int INVALID_VALUE = -1;
 
 
 

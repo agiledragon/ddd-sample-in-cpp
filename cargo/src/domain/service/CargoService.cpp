@@ -2,12 +2,12 @@
 #include "domain/model/Cargo.h"
 #include "domain/model/CargoFactory.h"
 #include "domain/model/CargoRepo.h"
-#include "domain/service/CargoProvider.h"
+#include "domain/model/CargoProvider.h"
 
-CargoService::CargoService(CargoRepo* repo, CargoProvider* provider)
-: repo(repo), provider(provider)
+CargoService::CargoService()
 {
-
+	repo = getCargoRepo();
+	provider = getCargoProvider();
 }
 
 void CargoService::create(int cargoId, int afterDays)
@@ -26,4 +26,14 @@ void CargoService::delay(int cargoId, int delayDays)
 		repo->update(cargo);
 		provider->confirm(cargo);
 	}
+}
+
+int CargoService::getAfterDays(int cargoId)
+{
+	Cargo* cargo = repo->get(cargoId);
+	if (cargo != nullptr)
+	{
+		return cargo->getAfterDays();
+	}
+	return INVALID_VALUE;
 }

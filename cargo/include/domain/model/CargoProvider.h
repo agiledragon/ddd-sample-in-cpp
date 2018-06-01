@@ -10,4 +10,7 @@ struct CargoProvider
 	virtual void confirm(Cargo* cargo) = 0;
 };
 
+void setCargoProvider(CargoProvider* provider);
+CargoProvider* getCargoProvider();
+
 #endif

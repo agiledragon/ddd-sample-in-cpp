@@ -1,4 +1,4 @@
-#include "domain/service/CargoProvider.h"
+#include "domain/model/CargoProvider.h"
 
 struct CargoProviderImpl : CargoProvider
 {
