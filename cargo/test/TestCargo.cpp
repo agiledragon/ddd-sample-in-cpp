@@ -100,7 +100,7 @@ TEST_F(CargoTest, create_cargo)
 	const int CARGO_ID = 1;
 	const int AFTER_DAYS = 10;
 	createCargo(CARGO_ID, AFTER_DAYS);
-	int afterDays = getCargoAfterDays(1);
+	int afterDays = getCargoAfterDays(CARGO_ID);
 	ASSERT_EQ(CARGO_ID, provider->cargoId);
 	ASSERT_EQ(AFTER_DAYS, provider->afterDays);
 	ASSERT_EQ(AFTER_DAYS, afterDays);
@@ -113,7 +113,7 @@ TEST_F(CargoTest, delay_cargo)
 	const int DAYS = 5;
 	createCargo(CARGO_ID, AFTER_DAYS);
 	delayCargo(CARGO_ID, DAYS);
-	int afterDays = getCargoAfterDays(1);
+	int afterDays = getCargoAfterDays(CARGO_ID);
 	ASSERT_EQ(CARGO_ID, provider->cargoId);
 	ASSERT_EQ(AFTER_DAYS + DAYS, provider->afterDays);
 	ASSERT_EQ(AFTER_DAYS + DAYS, afterDays);
