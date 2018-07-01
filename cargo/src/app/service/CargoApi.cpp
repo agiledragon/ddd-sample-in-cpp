@@ -16,3 +16,8 @@ int getCargoAfterDays(int cargoId)
 {
 	return CargoService().getAfterDays(cargoId);
 }
+
+void destroyCargo(int cargoId)
+{
+	CargoService().destroy(cargoId);
+}

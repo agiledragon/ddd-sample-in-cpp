@@ -37,3 +37,13 @@ int CargoService::getAfterDays(int cargoId)
 	}
 	return INVALID_VALUE;
 }
+
+void CargoService::destroy(int cargoId)
+{
+	Cargo* cargo = repo->get(cargoId);
+	if (cargo != nullptr)
+	{
+		repo->remove(cargoId);
+		delete cargo;
+	}
+}

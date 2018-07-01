@@ -4,7 +4,7 @@
 void createCargo(int cargoId, int afterDays);
 void delayCargo(int cargoId, int days);
 int getCargoAfterDays(int cargoId);
-
+void destroyCargo(int cargoId);
 
 
 

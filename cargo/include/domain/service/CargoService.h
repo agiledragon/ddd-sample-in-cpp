@@ -11,6 +11,7 @@ struct CargoService
 	void create(int cargoId, int afterDays);
 	void delay(int cargoId, int days);
 	int getAfterDays(int cargoId);
+	void destroy(int cargoId);
 
 private:
 	CargoRepo* repo;

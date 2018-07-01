@@ -104,6 +104,7 @@ TEST_F(CargoTest, create_cargo)
 	ASSERT_EQ(CARGO_ID, provider->cargoId);
 	ASSERT_EQ(AFTER_DAYS, provider->afterDays);
 	ASSERT_EQ(AFTER_DAYS, afterDays);
+	destroyCargo(CARGO_ID);
 }
 
 TEST_F(CargoTest, delay_cargo)
@@ -117,5 +118,6 @@ TEST_F(CargoTest, delay_cargo)
 	ASSERT_EQ(CARGO_ID, provider->cargoId);
 	ASSERT_EQ(AFTER_DAYS + DAYS, provider->afterDays);
 	ASSERT_EQ(AFTER_DAYS + DAYS, afterDays);
+	destroyCargo(CARGO_ID);
 }
 
