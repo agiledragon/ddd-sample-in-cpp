@@ -9,7 +9,6 @@ struct Worker;
 struct Parent : Role
 {
 	void attendShoolMeeting();
-	void workOverWeekend();
 
 private:
 	USE_ROLE(Worker);

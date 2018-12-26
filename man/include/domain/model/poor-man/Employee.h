@@ -11,7 +11,8 @@ struct ManInfo;
 struct Employee : Worker
 {
 	OVERRIDE(void askForLeave());
-	OVERRIDE(void workOvertime());
+
+	void workOvertime();
 
 	std::string getAccountId() const;
 

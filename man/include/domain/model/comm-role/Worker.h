@@ -9,7 +9,6 @@
 struct Worker : Role
 {
 	ABSTRACT(void askForLeave());
-	ABSTRACT(void workOvertime());
 };
 
 

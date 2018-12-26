@@ -7,7 +7,7 @@ void Boss::askForLeave()
 
 }
 
-void Boss::workOvertime()
+void Boss::assignTask()
 {
 
 }

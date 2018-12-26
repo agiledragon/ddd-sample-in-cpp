@@ -10,9 +10,3 @@ void Parent::attendShoolMeeting()
 	INFO_LOG("go home");
 }
 
-void Parent::workOverWeekend()
-{
-	INFO_LOG("send children to grandparent");
-	ROLE(Worker).workOvertime();
-	INFO_LOG("pick up children from grandparent");
-}
