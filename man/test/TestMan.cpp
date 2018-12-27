@@ -11,8 +11,7 @@
 #include <map>
 #include <vector>
 #include <string>
-#include <iostream>
-using namespace std;
+
 namespace
 {
 	struct PhoneMsg
@@ -24,9 +23,9 @@ namespace
 	{
 		OVERRIDE(void send(const std::string& phoneNumber, const std::string& format,
 					const std::string& oneAccountId, U32 amount, const std::string& anotherAccountId))
-			{
-				msgs[phoneNumber] = PhoneMsg{amount};
-			}
+		{
+			msgs[phoneNumber] = PhoneMsg{amount};
+		}
 
 		std::map<std::string, PhoneMsg> msgs;
 	};
@@ -235,7 +234,7 @@ protected:
 	FakeRichManRepo* richRepo;
 };
 
-TEST_F(TestMan, happy_new_year)
+TEST_F(TestMan, happy_new_year_2019)
 {
 	const U32 RED_PACKET = 2000;
 	U32 srcAmountStart = api->getRichManAmount(richManId);
