@@ -237,21 +237,21 @@ protected:
 TEST_F(TestMan, happy_new_year_2019)
 {
 	const U32 RED_PACKET = 2000;
-	U32 srcAmountStart = api->getRichManAmount(richManId);
-	U32 dstAmountStart = api->getPoorManAmount(poorManId);
+	U32 richAmountStart = api->getRichManAmount(richManId);
+	U32 poorAmountStart = api->getPoorManAmount(poorManId);
 
 	api->happyNewYear2019(richManId, poorManId, RED_PACKET);
 
-	U32 srcAmountEnd = api->getRichManAmount(richManId);
-	U32 dstAmountEnd = api->getPoorManAmount(poorManId);
+	U32 richAmountEnd = api->getRichManAmount(richManId);
+	U32 poorAmountEnd = api->getPoorManAmount(poorManId);
 
-	ASSERT_EQ(RED_PACKET, srcAmountStart - srcAmountEnd);
-	ASSERT_EQ(RED_PACKET, dstAmountEnd - dstAmountStart);
+	ASSERT_EQ(RED_PACKET, richAmountStart - richAmountEnd);
+	ASSERT_EQ(RED_PACKET, poorAmountEnd - poorAmountStart);
 
-	auto sendedMsg = provider->msgs[richPhoneNumber];
-	ASSERT_EQ(RED_PACKET, sendedMsg.amount);
+	auto transferToMsg = provider->msgs[richPhoneNumber];
+	ASSERT_EQ(RED_PACKET, transferToMsg.amount);
 
-	auto receivedMsg = provider->msgs[poorPhoneNumber];
-	ASSERT_EQ(RED_PACKET, receivedMsg.amount);
+	auto transferFromMsg = provider->msgs[poorPhoneNumber];
+	ASSERT_EQ(RED_PACKET, transferFromMsg.amount);
 }
 

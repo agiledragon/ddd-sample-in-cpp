@@ -9,6 +9,7 @@ struct ManInfo
 {
 	ManInfo(const std::string& manId, const std::string& name,
 			Gender gender, const std::string& phoneNumber, U32 initAmount);
+	~ManInfo();
 
 	std::string getAccountId() const;
 

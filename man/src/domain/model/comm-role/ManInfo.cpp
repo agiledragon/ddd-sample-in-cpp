@@ -8,6 +8,11 @@ ManInfo::ManInfo(const std::string& manId, const std::string& name,
 	accountId = AccountService().createAccount(manId, phoneNumber, initAmount);
 }
 
+ManInfo::~ManInfo()
+{
+	AccountService().destroyAccount(accountId);
+}
+
 std::string ManInfo::getAccountId() const
 {
 	return accountId;
