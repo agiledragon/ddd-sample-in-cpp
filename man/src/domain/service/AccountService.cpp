@@ -20,7 +20,7 @@ void AccountService::transferMoney(const std::string& srcAccountId, const std::s
 {
 	auto srcAccount = repo->get(srcAccountId);
 	auto dstAccount = repo->get(dstAccountId);
-	SELF(*srcAccount, MoneySource).transferMoneyTo(*dstAccount, amount);
+	SELF(*srcAccount, MoneySource).transferMoneyTo(SELF(*dstAccount, MoneyDestination), amount);
 }
 
 U32 AccountService::getAmount(const std::string& accountId)
