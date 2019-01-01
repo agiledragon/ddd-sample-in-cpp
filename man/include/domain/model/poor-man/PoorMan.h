@@ -6,11 +6,13 @@
 #include "domain/model/comm-role/Parent.h"
 #include "domain/model/comm-role/ManInfo.h"
 #include "domain/model/poor-man/Employee.h"
+#include "domain/model/poor-man/Cooker.h"
 
 
 struct PoorMan : AggregateRoot
 			   , Parent
 			   , Employee
+			   , Cooker
 			   , private ManInfo
 {
 	PoorMan(const std::string& manId, const std::string& name, Gender gender,

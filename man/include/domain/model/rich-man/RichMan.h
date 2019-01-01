@@ -4,6 +4,7 @@
 
 #include "domain/model/base/AggregateRoot.h"
 #include "domain/model/rich-man/Boss.h"
+#include "domain/model/rich-man/Investor.h"
 #include "domain/model/comm-role/Parent.h"
 #include "domain/model/comm-role/ManInfo.h"
 
@@ -11,6 +12,7 @@
 struct RichMan : AggregateRoot
 			   , Parent
 			   , Boss
+			   , Investor
 			   , private ManInfo
 {
 	RichMan(const std::string& manId, const std::string& name, Gender gender,
