@@ -19,13 +19,6 @@ std::string RichManService::createMan(const std::string& name, Gender gender,
 	return manId;
 }
 
-U32 RichManService::getAmount(const std::string& manId)
-{
-	auto man = repo->get(manId);
-	auto accountId = SELF(*man, Boss).getAccountId();
-	return AccountService().getAmount(accountId);
-}
-
 void RichManService::destroyMan(const std::string& manId)
 {
 	auto man = repo->remove(manId);

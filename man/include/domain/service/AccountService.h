@@ -12,8 +12,6 @@ struct AccountService
 	AccountService();
 
 	std::string createAccount(const std::string& manId, const std::string& phoneNumber, U32 initAmount);
-	void transferMoney(const std::string& srcAccountId, const std::string& dstAccountId, U32 amount);
-	U32 getAmount(const std::string& accountId);
 	void destroyAccount(const std::string& accountId);
 
 private:

@@ -4,6 +4,7 @@
 #include "pub/base/Types.h"
 #include "domain/service/RichManService.h"
 #include "domain/service/PoorManService.h"
+#include "domain/service/AmountQuery.h"
 
 #include <string>
 
@@ -25,6 +26,7 @@ private:
 private:
 	RichManService richManService;
 	PoorManService poorManService;
+	AmountQuery amounQuery;
 };
 
 

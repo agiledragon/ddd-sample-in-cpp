@@ -1,9 +1,10 @@
 #include "app/service/ManApi.h"
-#include "domain/service/ManService.h"
+#include "domain/service/TransferMoney.h"
 
 #include <stdlib.h>
 
-ManApi::ManApi() : richManService(RichManService()), poorManService(PoorManService())
+ManApi::ManApi()
+: richManService(RichManService()), poorManService(PoorManService()), amounQuery(AmountQuery())
 {
 
 }
@@ -22,17 +23,17 @@ std::string ManApi::createPoorMan(const std::string& name, const std::string& ph
 
 U32 ManApi::getRichManAmount(const std::string& manId)
 {
-	return richManService.getAmount(manId);
+	return amounQuery.getRichManAmount(manId);
 }
 
 U32 ManApi::getPoorManAmount(const std::string& manId)
 {
-	return poorManService.getAmount(manId);
+	return amounQuery.getPoorManAmount(manId);
 }
 
 void ManApi::happyNewYear2019(const std::string& richManId, const std::string& poorManId, U32 amount)
 {
-	ManService().transferMoney(richManId, poorManId, amount);
+	transferMoney(richManId, poorManId, amount);
 }
 
 void ManApi::destroyRichMan(const std::string& manId)

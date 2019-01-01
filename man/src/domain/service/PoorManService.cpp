@@ -18,13 +18,6 @@ std::string PoorManService::createMan(const std::string& name, Gender gender,
 	return manId;
 }
 
-U32 PoorManService::getAmount(const std::string& manId)
-{
-	auto man = repo->get(manId);
-	auto accountId = SELF(*man, Employee).getAccountId();
-	return AccountService().getAmount(accountId);
-}
-
 void PoorManService::destroyMan(const std::string& manId)
 {
 	auto man = repo->remove(manId);

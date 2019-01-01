@@ -16,19 +16,6 @@ std::string AccountService::createAccount(const std::string& manId, const std::s
 	return accountId;
 }
 
-void AccountService::transferMoney(const std::string& srcAccountId, const std::string& dstAccountId, U32 amount)
-{
-	auto srcAccount = repo->get(srcAccountId);
-	auto dstAccount = repo->get(dstAccountId);
-	SELF(*srcAccount, MoneySource).transferMoneyTo(SELF(*dstAccount, MoneyDestination), amount);
-}
-
-U32 AccountService::getAmount(const std::string& accountId)
-{
-	auto account = repo->get(accountId);
-	return SELF(*account, MoneySource).getAmount();
-}
-
 void AccountService::destroyAccount(const std::string& accountId)
 {
 	auto account = repo->remove(accountId);
