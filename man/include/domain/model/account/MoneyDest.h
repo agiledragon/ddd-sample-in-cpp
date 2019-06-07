@@ -13,7 +13,7 @@ struct AccountInfo;
 struct Balance;
 struct Phone;
 
-struct MoneyDestination : Role
+struct MoneyDest : Role
 {
 	void transferMoneyFrom(const std::string& srcAccountId, U32 amount) const;
 	std::string getAccountId() const;

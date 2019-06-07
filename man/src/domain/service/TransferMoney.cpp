@@ -20,5 +20,5 @@ void transferMoney(const std::string& richManId, const std::string& poorManId, U
 	auto accountRepo = getAccountRepo();
 	auto srcAccount = accountRepo->get(richAccountId);
 	auto dstAccount = accountRepo->get(poorAccountId);
-	SELF(*srcAccount, MoneySource).transferMoneyTo(SELF(*dstAccount, MoneyDestination), amount);
+	SELF(*srcAccount, MoneySrc).transferMoneyTo(SELF(*dstAccount, MoneyDest), amount);
 }

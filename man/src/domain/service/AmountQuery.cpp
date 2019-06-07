@@ -22,7 +22,7 @@ U32 AmountQuery::getRichManAmount(const std::string& manId)
 
 
 	auto account = accountRepo->get(accountId);
-	return SELF(*account, MoneySource).getAmount();
+	return SELF(*account, MoneySrc).getAmount();
 }
 
 U32 AmountQuery::getPoorManAmount(const std::string& manId)
@@ -32,5 +32,5 @@ U32 AmountQuery::getPoorManAmount(const std::string& manId)
 
 	auto accountRepo = getAccountRepo();
 	auto account = accountRepo->get(accountId);
-	return SELF(*account, MoneySource).getAmount();
+	return SELF(*account, MoneySrc).getAmount();
 }

@@ -7,11 +7,11 @@
 struct AccountInfo;
 struct Balance;
 struct Phone;
-struct MoneyDestination;
+struct MoneyDest;
 
-struct MoneySource : Role
+struct MoneySrc : Role
 {
-	void transferMoneyTo(const MoneyDestination& dst, U32 amount);
+	void transferMoneyTo(const MoneyDest& dst, U32 amount);
 	U32 getAmount() const;
 
 private:

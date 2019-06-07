@@ -13,6 +13,11 @@ ManInfo::~ManInfo()
 	AccountService().destroyAccount(accountId);
 }
 
+bool ManInfo::operator==(ValueObject* rhs)
+{
+	return true;
+}
+
 std::string ManInfo::getAccountId() const
 {
 	return accountId;
